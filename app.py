@@ -36,4 +36,12 @@ def modify_book(id):
             books[index].update(modified_book)
             return jsonify(books[index])
 
+# Add book
+@app.route("/books", methods=["POST"])
+def add_book():
+    new_book = request.get_json()
+    books.append(new_book)  
+
+    return jsonify(books)
+
 app.run(port=5000, host='localhost', debug=True)
